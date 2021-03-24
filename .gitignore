@@ -1,0 +1,36 @@
+# Compiled C++ object files #
+*.o
+
+# files for static compile: sources
+libs/*gz
+libs/*zip
+#
+# files for static compile: "factory" folders
+libs/*-*
+libs/i3dlibs
+libs/libf2c
+libs/cppzmq
+libs/libzmq
+#
+# files for static compile: outputs
+libs/DEPLOY
+
+# Various build folders #
+VIZU
+BUILD*
+bin*
+
+# Log file, some documentation material #
+*.log
+doc/Mito*
+src/git_hash.h
+
+# Apple #
+.DS_Store
+
+# VIM editor #
+.*.swp
+
+# CLION
+.idea
+cmake-build-*
