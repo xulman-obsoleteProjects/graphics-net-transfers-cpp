@@ -1,3 +1,4 @@
+#include <sstream>
 #include <iostream>
 #include <Poco/Net/HTTPClientSession.h>
 #include <Poco/Net/HTTPRequest.h>
@@ -6,9 +7,16 @@
 
 int main(int argc,char** argv)
 {
+	int base = atoi(argv[1]);
+	std::cout << "base for IDs is " << base << "\n";
 	try {
-		std::string msg("v1 points 2 dim 3 10 7.7 8.8 9.9 5 2 11 17.7 8.8 9.9 5 3");
-		std::string msG("v1 points 2 dim 3 110 7.7 8.8 19.9 5 2 111 17.7 8.8 19.9 5 3");
+		std::ostringstream a,b;
+		a << "v1 points 2 dim 3 " << base << " 7.7 8.8 9.9 5 2 " << base+1 << " 17.7 8.8 9.9 5 3";
+		b << "v1 points 2 dim 3 " << base+100 << " 7.7 8.8 19.9 5 2 " << base+101 << " 17.7 8.8 19.9 5 3";
+		std::string msg(a.str());
+		std::string msG(b.str());
+		std::cout << "going to send: " << msg << "\n";
+		std::cout << "going to send: " << msG << "\n";
 
 		using namespace Poco::Net;
 		HTTPClientSession session("localhost",8765);
